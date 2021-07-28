@@ -42,9 +42,15 @@ class PostController extends Controller
         return redirect('/post/'.request()->get('slug'));
     }
    
-    public function edit()
+    public function edit(Post $post)
     {
-        return view('posts.edit');
+        return view('posts.edit',compact('post'));
+    }
+
+    public function update(Post $post)
+    {
+        $this->postService->updatePost();
+        return redirect('/post/'.request()->get('slug'));
     }
 
     public function showUser(User $user) //show all specific user posts

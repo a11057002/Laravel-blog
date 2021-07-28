@@ -51,4 +51,19 @@ class PostService
         $attr['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
         Post::create($attr);
     }
+
+    public function updatePost()
+    {
+        request()->validate([
+            'title'=>'required',
+            'excerpt'=>'required',
+            // 排除掉自己 id 的 unique slug
+            'slug'=>'required|unique:posts,slug,'.$post->id,
+            'body'=>'required',
+            'category'=>'required'
+        ]);
+        $attr = request()->except('category');
+        $attr['category_id'] = request()->get('category');
+        $post->update($attr);
+    }
 }

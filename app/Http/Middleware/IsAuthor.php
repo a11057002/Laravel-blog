@@ -18,7 +18,8 @@ class IsAuthor
      */
     public function handle(Request $request, Closure $next)
     {
-        $post = Post::where('slug',request()->route()->parameters['post'])->first();
+        // $post = Post::where('slug',request()->route()->parameters['post'])->first();。
+        $post = request()->route()->parameters['post'];
         if(!$post->user->id === auth()->user()->id)
             abort(Response::HTTP_FORBIDDEN);
         return $next($request);
