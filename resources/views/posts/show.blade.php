@@ -9,7 +9,7 @@
                 </p>
 
                 <div class="flex items-center lg:justify-center text-sm mt-4">
-                    <img src="/images/lary-avatar.svg" alt="Lary avatar">
+                    <img src="https://i.pravatar.cc/100?u={{ $post->id }}" class="rounded-xl" alt="Lary avatar">
                     <div class="ml-3 text-left">
                         <h5 class="font-bold">{{ $post->user->name }}</h5>
                     </div>

@@ -37,7 +37,6 @@
                                 {{ $post->user->name }}
                             </h5>
                         </a>
-                        <h6>Mascot at Laracasts</h6>
                     </div>
                 </div>
 
