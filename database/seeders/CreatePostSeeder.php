@@ -20,19 +20,19 @@ class CreatePostSeeder extends Seeder
         // Post::truncate();
         // Category::truncate();
         // factory(number)    number to create fake data
-        $u = User::factory()->create([
-            'name' => 'bobo'
-        ]);
-        // $u = User::find(1);
-        Post::factory(10)->create([
-            'user_id' => $u->id
-        ]);
+        // $u = User::factory()->create([
+        //     'name' => 'bobo'
+        // ]);
+        // // $u = User::find(1);
+        // Post::factory(10)->create([
+        //     'user_id' => $u->id
+        // ]);
         // User::factory()->create();
 
-        // $c = Category::create([
-        //     'name' => 'a',
-        //     'slug' => 'a'
-        // ]);
+        $c = Category::create([
+            'name' => 'a',
+            'slug' => 'a'
+        ]);
         // $b = Category::create([
         //     'name' => 'work',
         //     'slug' => 'work'

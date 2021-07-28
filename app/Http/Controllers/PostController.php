@@ -36,6 +36,25 @@ class PostController extends Controller
         return view('posts.create');
     }
 
+    public function store()
+    {
+        
+        request()->validate([
+            'title'=>'required',
+            'excerpt'=>'required',
+            'body'=>'required',
+            'thumbnail'=>'image',
+            'slug'=>'required|unique:posts,slug',
+            'category'=>'required|exists:categories,id'
+        ]);
+        $attr = request()->except('category');
+        $attr['category_id'] = request()->get('category');
+        $attr['user_id'] = auth()->id();
+        $attr['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        Post::create($attr);
+        return redirect('/post/'. $attr['slug']);
+    }
+
     public function showUser(User $user)
     {
         $posts = $user->posts()->paginate(5);
