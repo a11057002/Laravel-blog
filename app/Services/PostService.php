@@ -52,7 +52,7 @@ class PostService
         Post::create($attr);
     }
 
-    public function updatePost()
+    public function updatePost(Post $post)
     {
         request()->validate([
             'title'=>'required',

@@ -49,7 +49,7 @@ class PostController extends Controller
 
     public function update(Post $post)
     {
-        $this->postService->updatePost();
+        $this->postService->updatePost($post);
         return redirect('/post/'.request()->get('slug'));
     }
 
