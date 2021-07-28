@@ -53,6 +53,12 @@ class PostController extends Controller
         return redirect('/post/'.request()->get('slug'));
     }
 
+    public function destory(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
+    }
+
     public function showUser(User $user) //show all specific user posts
     {
         $posts = $user->posts()->paginate(5);
@@ -60,5 +66,6 @@ class PostController extends Controller
         $categories = Category::all();
         return view('posts.index', compact('posts', 'categories', 'currentCategory'));
     }
+
 
 }

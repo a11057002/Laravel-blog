@@ -12,7 +12,7 @@
         <nav class="md:flex md:justify-between md:items-center">
             <div>
                 <a href="/">
-                    <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
+                    <img src="" alt="Logo" width="165" height="16">
                 </a>
             </div>
 
@@ -27,7 +27,7 @@
                     </span>
                     <form action="/logout" method="POST" class="text-xs ml-6">
                         @csrf
-                        <button type="submit"> Log out</button>
+                        <button type="submit"><b> Logout</b></button>
                     </form>
                 @endguest
                 {{-- <a href="#newsletter"

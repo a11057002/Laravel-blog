@@ -14,11 +14,23 @@
                 </svg>
                 Back to Posts
             </a>
-            <a href="/post/{{$post->slug}}/edit">
-                <button class="bg-blue-400 text-white rounded py-2 px-4">
-                    更新
-                </button>
-            </a>
+
+            @if ($post->user->id === (auth()->user() ? auth()->user()->id : ''))
+                <div class="flex">
+                    <a href="/post/{{ $post->slug }}/edit" class="mr-3">
+                        <button class="bg-blue-400 text-white rounded py-2 px-4">
+                            更新
+                        </button>
+                    </a>
+                    <form action="/post/{{$post->slug}}" method="post">
+                        @csrf
+                        <input name="_method" type="hidden" value="DELETE">
+                        <button class="bg-red-400 text-white rounded py-2 px-4" type="submit">
+                            刪除
+                        </button>
+                    </form>
+                </div>
+            @endif
         </div>
         <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
 

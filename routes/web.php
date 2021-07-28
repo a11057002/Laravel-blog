@@ -71,6 +71,7 @@ Route::get('/post/create',[PostController::class, 'create'])->middleware('auth')
 Route::post('/post/create',[PostController::class, 'store'])->middleware('auth');
 // Route::get('/post/{post:slug}', [PostController::class, 'show'])->where('post', '[A-z\-0-9\x4DBF-\x9FFF]+');
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
+Route::delete('/post/{post:slug}', [PostController::class, 'destory']);
 Route::get('/post/{post:slug}/edit',[PostController::class,'edit'])->middleware('auth','isAuthor');
 Route::post('/post/{post:slug}/edit',[PostController::class,'update'])->middleware('auth','isAuthor');
 Route::post('/post/{post:slug}/comment', [CommentController::class, 'store']);
