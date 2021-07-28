@@ -30,7 +30,7 @@
 
             <footer class="flex justify-between items-center mt-8">
                 <div class="flex items-center text-sm">
-                    <img src="/images/lary-avatar.svg" alt="Lary avatar">
+                    <img src="https://i.pravatar.cc/100?u={{$post->user_id}}" alt="Lary avatar">
                     <div class="ml-3">
                         <a href="/user/{{ $post->user->name }}">
                             <h5 class="font-bold">

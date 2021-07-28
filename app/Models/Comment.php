@@ -11,6 +11,7 @@ class Comment extends Model
 {
     use HasFactory;
     protected $with = ['user'];
+    protected $guarded = [];
     public function post()
     {
         return $this->belongsTo(Post::class,'post_id');

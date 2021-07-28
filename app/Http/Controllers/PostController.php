@@ -15,7 +15,7 @@ class PostController extends Controller
     public function __construct(PostService $postService){
         $this->postService = $postService;
     }
-
+    
     public function index()
     {
         $posts = $this->postService->getPosts();
@@ -41,8 +41,11 @@ class PostController extends Controller
         $this->postService->createPost();
         return redirect('/post/'.request()->get('slug'));
     }
-
-    
+   
+    public function edit()
+    {
+        return view('posts.edit');
+    }
 
     public function showUser(User $user) //show all specific user posts
     {

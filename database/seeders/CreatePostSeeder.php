@@ -29,14 +29,14 @@ class CreatePostSeeder extends Seeder
         // ]);
         // User::factory()->create();
 
-        $c = Category::create([
-            'name' => 'a',
-            'slug' => 'a'
-        ]);
-        // $b = Category::create([
-        //     'name' => 'work',
-        //     'slug' => 'work'
+        // $c = Category::create([
+        //     'name' => 'a',
+        //     'slug' => 'a'
         // ]);
+        $b = Category::create([
+            'name' => 'work',
+            'slug' => 'work'
+        ]);
 
         // Post::create([
         //     'title' => 'My First Post',

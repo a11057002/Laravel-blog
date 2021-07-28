@@ -21,18 +21,19 @@
                     <a href="/register" class="text-xs font-bold uppercase">Register</a>
                     <a href="/login" class="text-xs font-bold uppercase ml-6 ">Login</a>
                 @else
+                    <img src="https://i.pravatar.cc/100?u={{ auth()->user()->id }}" width="50" height="50" class="rounded-xl mr-4">
                     <span class="text-xs font-bold uppercase">
-                        Welcome!
+                        Welcome!&nbsp;&nbsp;&nbsp;{{ auth()->user()->name }}
                     </span>
                     <form action="/logout" method="POST" class="text-xs ml-6">
                         @csrf
                         <button type="submit"> Log out</button>
                     </form>
                 @endguest
-                <a href="#newsletter"
+                {{-- <a href="#newsletter"
                     class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates
-                </a>
+                </a> --}}
             </div>
         </nav>
 
