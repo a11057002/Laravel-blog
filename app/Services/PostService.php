@@ -27,7 +27,7 @@ class PostService
         //     logger($q->sql,$q->bindings);
         // });
         // $posts = Post::with('category')->get();
-        return Post::with(['category','user'])->latest()->andyFilter(request(['search', 'category', 'user']))->paginate(5)->withQueryString();
+        return Post::with(['category', 'user'])->latest()->andyFilter(request(['search', 'category', 'user']))->paginate(5)->withQueryString();
     }
 
     public function getCategory()
@@ -35,11 +35,20 @@ class PostService
         return request('category') ? Category::firstWhere('name', request('category'))->name : 'Category';
     }
 
-    public function showUser(User $user)
+    public function createPost()
     {
-        $posts = $user->posts()->paginate(5);
-        $currentCategory = null;
-        $categories = Category::all();
-        return view('posts.index', compact('posts', 'categories', 'currentCategory'));
+        request()->validate([
+            'title' => 'required',
+            'excerpt' => 'required',
+            'body' => 'required',
+            'thumbnail' => 'image',
+            'slug' => 'required|unique:posts,slug',
+            'category' => 'required|exists:categories,id'
+        ]);
+        $attr = request()->except('category');
+        $attr['category_id'] = request()->get('category');
+        $attr['user_id'] = auth()->id();
+        $attr['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        Post::create($attr);
     }
 }
