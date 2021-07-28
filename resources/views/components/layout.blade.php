@@ -6,13 +6,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <link rel="stylesheet" href="/css/app.css">
-
 <body style="font-family: Open Sans, sans-serif">
     <section class="px-6 py-8">
         <nav class="md:flex md:justify-between md:items-center">
             <div>
                 <a href="/">
-                    <img src="" alt="Logo" width="165" height="16">
+                    <img src="/images/logo.jpg" alt="Logo" width="100" height="100">
                 </a>
             </div>
 
