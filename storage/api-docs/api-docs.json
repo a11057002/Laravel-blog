@@ -1,0 +1,72 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API 文件測試",
+        "description": "Swagger test",
+        "contact": {
+            "email": "anst@test.com"
+        },
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/api/v1/post/{post}": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Show specific post",
+                "operationId": "showPost",
+                "parameters": [
+                    {
+                        "name": "post",
+                        "in": "path",
+                        "description": "Post slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Post details"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/{user}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Show all the posts of the user",
+                "operationId": "showUserPosts",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "user name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get all the posts of the user"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
