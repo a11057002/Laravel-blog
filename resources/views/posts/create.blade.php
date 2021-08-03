@@ -21,8 +21,8 @@
                     <label for="thumbnail" class="block mb-2 uppercase font-bold text-sx text-gray-700">
                         thumbnail
                     </label>
-                    <input type="file" name="thumbnail" id="thumbnail" class="border border-gray-400 p-2 w-full" required
-                        value="{{ old('thumbnail') }}">
+                    <input type="file" name="thumbnail" id="thumbnail" class="border border-gray-400 p-2 w-full"
+                        required value="{{ old('thumbnail') }}">
                     @error('thumbnail')
                         <p class="text-red-500 text-xs">{{ $message }}</p>
                     @enderror
@@ -51,8 +51,8 @@
                     <label for="body" class="block mb-2 uppercase font-bold text-sx text-gray-700">
                         Body
                     </label>
-                    <input type="text" name="body" id="body" class="border border-gray-400 p-2 w-full" required
-                        value="{{ old('body') }}">
+                    <textarea name="body" id="body" class="resize:none" required value="{{ old('body') }}" cols="40" rows="20">
+                    </textarea>
                     @error('body')
                         <p class="text-red-500 text-xs">{{ $message }}</p>
                     @enderror

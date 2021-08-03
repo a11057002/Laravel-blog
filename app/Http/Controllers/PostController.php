@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Services\PostService;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -55,6 +56,7 @@ class PostController extends Controller
 
     public function destory(Post $post)
     {
+        Storage::delete($post->thumbnail);
         $post->delete();
         return redirect('/');
     }

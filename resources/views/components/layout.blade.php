@@ -6,6 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <link rel="stylesheet" href="/css/app.css">
+
 <body style="font-family: Open Sans, sans-serif">
     <section class="px-6 py-8">
         <nav class="md:flex md:justify-between md:items-center">
@@ -15,12 +16,12 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0 flex items-center">
+            <div class="mt-8 md:mt-0 flex items-center mr-4">
                 @guest
                     <a href="/register" class="text-xs font-bold uppercase">Register</a>
                     <a href="/login" class="text-xs font-bold uppercase ml-6 ">Login</a>
                 @else
-                    <img src="https://i.pravatar.cc/100?u={{ auth()->user()->id }}" width="50" height="50" class="rounded-xl mr-4">
+                    {{-- <img src="https://i.pravatar.cc/100?u={{ auth()->user()->id }}" width="50" height="50" class="rounded-xl mr-4"> --}}
                     <span class="text-xs font-bold uppercase">
                         Welcome!&nbsp;&nbsp;&nbsp;{{ auth()->user()->name }}
                     </span>
@@ -33,9 +34,9 @@
                     class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates
                 </a> --}}
-            </div>
         </nav>
-
+        <div>
+        </div>
         {{ $slot }}
 
         <footer id="newsletter"

@@ -57,13 +57,17 @@ class PostService
         request()->validate([
             'title'=>'required',
             'excerpt'=>'required',
+            'thumbnail' => 'image',
             // 排除掉自己 id 的 unique slug
             'slug'=>'required|unique:posts,slug,'.$post->id,
             'body'=>'required',
             'category'=>'required'
         ]);
-        $attr = request()->except('category');
+        $attr = request()->except(['category','body']);
+        $attr['body'] =str_replace("\r\n","<br>",request()->get('body'));
         $attr['category_id'] = request()->get('category');
+        if(request()->file('thumbnail'))
+            $attr['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
         $post->update($attr);
     }
 }

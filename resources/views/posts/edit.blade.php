@@ -5,7 +5,7 @@
             <h1 class="text-lg  font-bold mb-4">
                 更新文章
             </h1>
-            <form action="/post/{{$post->slug}}/edit" method="post" enctype="multipart/form-data">
+            <form action="/post/{{ $post->slug }}/edit" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-6">
                     <label for="title" class="block mb-2 uppercase font-bold text-sx text-gray-700">
@@ -20,7 +20,7 @@
                 <div class="mb-6">
                     <label for="thumbnail" class="block mb-2 uppercase font-bold text-sx text-gray-700">
                         thumbnail
-                        <img src="{{asset('/storage/'.$post->thumbnail)}}" alt="thumbnail" width="80" height="80">
+                        <img src="{{ asset('/storage/' . $post->thumbnail) }}" alt="thumbnail" width="80" height="80">
                     </label>
                     <input type="file" name="thumbnail" id="thumbnail" class="border border-gray-400 p-2 w-full"
                         value="{{ $post->thumbnail }}">
@@ -52,8 +52,9 @@
                     <label for="body" class="block mb-2 uppercase font-bold text-sx text-gray-700">
                         Body
                     </label>
-                    <input type="text" name="body" id="body" class="border border-gray-400 p-2 w-full" required
-                        value="{{ $post->body }}">
+                    <textarea name="body" id="body" class="resize:none" required cols="40" rows="20"
+                        value="  {{ $post->body }}">
+                    </textarea>
                     @error('body')
                         <p class="text-red-500 text-xs">{{ $message }}</p>
                     @enderror
