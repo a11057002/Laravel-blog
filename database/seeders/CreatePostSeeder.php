@@ -33,10 +33,10 @@ class CreatePostSeeder extends Seeder
         //     'name' => 'a',
         //     'slug' => 'a'
         // ]);
-        $b = Category::create([
-            'name' => 'work',
-            'slug' => 'work'
-        ]);
+        // Category::create([
+        //     'name' => 'work',
+        //     'slug' => 'work'
+        // ]);
 
         // Post::create([
         //     'title' => 'My First Post',

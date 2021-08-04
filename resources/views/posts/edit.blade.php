@@ -9,7 +9,7 @@
                 @csrf
                 <div class="mb-6">
                     <label for="title" class="block mb-2 uppercase font-bold text-sx text-gray-700">
-                        Title
+                        標題
                     </label>
                     <input type="text" name="title" id="title" class="border border-gray-400 p-2 w-full" required
                         value="{{ $post->title }}">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="mb-6">
                     <label for="thumbnail" class="block mb-2 uppercase font-bold text-sx text-gray-700">
-                        thumbnail
+                        縮圖
                         <img src="{{ asset('/storage/' . $post->thumbnail) }}" alt="thumbnail" width="80" height="80">
                     </label>
                     <input type="file" name="thumbnail" id="thumbnail" class="border border-gray-400 p-2 w-full"
@@ -30,7 +30,7 @@
                 </div>
                 <div class="mb-6">
                     <label for="excerpt" class="block mb-2 uppercase font-bold text-sx text-gray-700">
-                        Excerpt
+                        簡要
                     </label>
                     <input type="text" name="excerpt" id="excerpt" class="border border-gray-400 p-2 w-full" required
                         value="{{ $post->excerpt }}">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="mb-6">
                     <label for="slug" class="block mb-2 uppercase font-bold text-sx text-gray-700">
-                        slug
+                        網址縮址
                     </label>
                     <input type="text" name="slug" id="slug" class="border border-gray-400 p-2 w-full" required
                         value="{{ $post->slug }}">
@@ -50,26 +50,33 @@
                 </div>
                 <div class="mb-6">
                     <label for="body" class="block mb-2 uppercase font-bold text-sx text-gray-700">
-                        Body
+                        內容
                     </label>
-                    <textarea name="body" id="body" class="resize:none" required cols="40" rows="20"
-                        value="  {{ $post->body }}">
-                    </textarea>
+                    <textarea name="body" id="body" class="resize:none" required cols="40" rows="20">{{ $post->body }}</textarea>
                     @error('body')
                         <p class="text-red-500 text-xs">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-6">
                     <label for="body" class="block mb-2 uppercase font-bold text-sx text-gray-700">
-                        Category
+                        分類
                     </label>
                     <select name="category" id="category">
-                        {{-- TODO: pass in categories --}}
                         @foreach (App\Models\Category::all() as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
                     @error('category')
+                        <p class="text-red-500 text-xs">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-6">
+                    <label for="hyperlink" class="block mb-2 uppercase font-bold text-sx text-gray-700">
+                        Youtube連結
+                    </label>
+                    <input type="text" name="hyperlink" id="hyperlink" class="border border-gray-400 p-2 w-full"
+                        required value="{{ old('hyperlink') }}">
+                    @error('hyperlink')
                         <p class="text-red-500 text-xs">{{ $message }}</p>
                     @enderror
                 </div>

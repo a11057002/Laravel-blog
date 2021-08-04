@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Services\Newsletter;
 use Illuminate\Http\Request;
 
+
+// Not using
 class NewsletterController extends Controller
 {
     // single action controller

@@ -60,19 +60,20 @@
                 <h1 class="font-bold text-3xl lg:text-4xl mb-10">
                     {{ $post->title }}
                 </h1>
-
-                <div class="space-y-4 lg:text-lg leading-loose">
-                    <p>
-                        {!! $post->body !!}
-                    </p>
-
-
+                <div>
+                    {!! $post->body !!}
+                    {{-- {!! Illuminate\Support\Str::markdown($post->body) !!} --}}
                 </div>
+                @if ($post->hyperlink)
+                    <div class="mt-5">
+                        <iframe src="https://www.youtube.com/embed/{{$post->hyperlink}}?html5=1" title="YouTube video player" sandbox="allow-same-origin allow-scripts"
+                            frameborder="0" allowfullscreen></iframe>
+                    </div>
+                @endif
             </div>
 
             <section class="col-span-8 col-start-5 mt-10 space-y-4">
                 @auth
-
                     <form action="/post/{{ $post->slug }}/comment" method="POST"
                         class="border border-gray-200 p-6 rounded">
                         @csrf

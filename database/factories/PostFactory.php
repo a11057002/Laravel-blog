@@ -26,9 +26,9 @@ class PostFactory extends Factory
         return [
             //
             'title'=>$this->faker->sentence(),
-            // 'excerpt' => $this->faker->sentence(),
-            'excerpt' => '<p>' . implode('</p></p>',$this->faker->paragraphs(2)) . '</p>',
-            // 'body' => $this->faker->paragraphs(10,true),
+            'excerpt' => $this->faker->sentence(),
+            // 'excerpt' => '<p>' . implode('</p></p>',$this->faker->paragraphs(2)) . '</p>',
+            // 'body' => str_replace("<br>","\r\n",$this->faker->paragraphs(10,true)),
             'body' => '<p>' . implode('</p></p>',$this->faker->paragraphs(10)) . '</p>',
             'slug' => $this->faker->slug(),
             'user_id' => User::Factory(),

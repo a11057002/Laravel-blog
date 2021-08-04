@@ -27,6 +27,11 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+
+        if(str_contains($post->hyperlink,'youtube'))
+            $post->hyperlink=explode('?v=',$post->hyperlink)[1];
+        // 執行 safe 才會存到 db 中
+        // $post->save();
         return view('posts.show', compact('post'));
         // $test = cache()->remember("post.{$test}" , 5 , fn() => $test);
         // return view('test',compact('test'));
@@ -45,6 +50,8 @@ class PostController extends Controller
    
     public function edit(Post $post)
     {
+        // 換行轉換
+        $post->body = str_replace("<br>","\r\n",$post->body);
         return view('posts.edit',compact('post'));
     }
 

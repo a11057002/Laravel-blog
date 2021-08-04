@@ -7,12 +7,12 @@
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <link rel="stylesheet" href="/css/app.css">
 
-<body style="font-family: Open Sans, sans-serif">
+<body style="font-family: Open Sans, sans-serif" class="min-h-screen" >
     <section class="px-6 py-8">
         <nav class="md:flex md:justify-between md:items-center">
             <div>
                 <a href="/">
-                    <img src="/images/logo.jpg" alt="Logo" width="100" height="100">
+                    <img src="#" alt="Logo" width="100" height="100">
                 </a>
             </div>
 
@@ -39,7 +39,7 @@
         </div>
         {{ $slot }}
 
-        <footer id="newsletter"
+        {{-- <footer id="newsletter"
             class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
             <img src="/images/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
             <h5 class="text-3xl">Stay in touch with the latest posts</h5>
@@ -72,7 +72,14 @@
                     </form>
                 </div>
             </div>
-        </footer>
+        </footer> --}}
+
     </section>
+
     <x-flash />
+    {{-- <footer class="sticky bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-10 w-full bottom-0 mt-5">
+        <div>
+            底
+        </div>
+    </footer> --}}
 </body>

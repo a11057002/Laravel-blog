@@ -61,7 +61,8 @@ class PostService
             // 排除掉自己 id 的 unique slug
             'slug'=>'required|unique:posts,slug,'.$post->id,
             'body'=>'required',
-            'category'=>'required'
+            'category'=>'required',
+            'hyperlink'=>'url'
         ]);
         $attr = request()->except(['category','body']);
         $attr['body'] =str_replace("\r\n","<br>",request()->get('body'));
