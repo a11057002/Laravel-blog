@@ -48,7 +48,7 @@
                                 name="carousel" aria-hidden="true" hidden="" checked="checked">
                             <div class="carousel-item absolute opacity-0 bg-center"
                                 style="height:500px; background-image: url({{ asset('storage/' . $post->thumbnail) }})">
-                            </div>
+                              </div>
                             <label for="carousel-3"
                                 class="control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto flex justify-center content-center"><i
                                     class="fas fa-angle-left mt-3"></i></label>
