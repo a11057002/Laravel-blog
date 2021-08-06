@@ -7,6 +7,8 @@ use Illuminate\Validation\ValidationException;
 
 // 就是 Login
 class SessionController extends Controller
+{
+    //
     public function create()
     {
         return view('session.create');

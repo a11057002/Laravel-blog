@@ -7,7 +7,7 @@
     <div>
         <header class="mb-4">
             <strong>
-                <h3 class="font-bold">
+                <h3 class="font-bold" style="width:7em">
                     {{ $comment->user->name }}
                 </h3>
                 <p class="text-xs">Posted <time>{{ $comment->created_at->format("F j, Y, g:i a") }}</time></p>

@@ -4,7 +4,7 @@ namespace App\Services;
 
 use MailchimpMarketing\ApiClient;
 
-// Not Using
+// Not in used
 class MailchimpNewsletter implements Newsletter
 {
     public function __construct(protected ApiClient $client)

@@ -12,21 +12,6 @@ class PostService
 
     public function getPosts()
     {
-        // $posts = collect($files)->map(function ($file) {
-        //     $document = YamlFrontMatter::parseFile($file);
-        //     return new Post($document->title, $document->excerpt, $document->date, $document->body(), $document->slug);
-        // });
-        // $posts = []
-        // foreach ($files as $file) {
-        //     $document = YamlFrontMatter::parseFile($file);
-        //     $posts[] = new Post($document->title, $document->excerpt, $document->date, $document->body(), $document->slug);
-        // }
-        // dd($posts);
-        // YamlFrontMatter::parseFile(resource_path('posts/test.html'));
-        // DB::listen(function($q){
-        //     logger($q->sql,$q->bindings);
-        // });
-        // $posts = Post::with('category')->get();
         return Post::with(['category', 'user'])->latest()->andyFilter(request(['search', 'category', 'user']))->paginate(5)->withQueryString();
     }
 
@@ -55,20 +40,38 @@ class PostService
     public function updatePost(Post $post)
     {
         request()->validate([
-            'title'=>'required',
-            'excerpt'=>'required',
+            'title' => 'required',
+            'excerpt' => 'required',
             'thumbnail' => 'image',
             // 排除掉自己 id 的 unique slug
-            'slug'=>'required|unique:posts,slug,'.$post->id,
-            'body'=>'required',
-            'category'=>'required',
-            'hyperlink'=>'url'
+            'slug' => 'required|unique:posts,slug,' . $post->id,
+            'body' => 'required',
+            'category' => 'required',
+            'hyperlink' => 'url'
         ]);
-        $attr = request()->except(['category','body']);
-        $attr['body'] =str_replace("\r\n","<br>",request()->get('body'));
+        $attr = request()->except(['category', 'body']);
+        $attr['body'] = str_replace("\r\n", "<br>", request()->get('body'));
         $attr['category_id'] = request()->get('category');
-        if(request()->file('thumbnail'))
+        if (request()->file('thumbnail'))
             $attr['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
         $post->update($attr);
+    }
+
+    public  function parseYoutube($link)
+    {
+        if (preg_match('/youtube\.com\/watch\?v=([^\&\?\/]+)/', $link, $id)) {
+            $link = $id[1];
+        } else if (preg_match('/youtube\.com\/embed\/([^\&\?\/]+)/', $link, $id)) {
+            $link = $id[1];
+        } else if (preg_match('/youtube\.com\/v\/([^\&\?\/]+)/', $link, $id)) {
+            $link = $id[1];
+        } else if (preg_match('/youtu\.be\/([^\&\?\/]+)/', $link, $id)) {
+            $link = $id[1];
+        } else if (preg_match('/youtube\.com\/verify_age\?next_url=\/watch%3Fv%3D([^\&\?\/]+)/', $link, $id)) {
+            $link = $id[1];
+        } else {
+            // not an youtube video
+        }
+        return $link;
     }
 }

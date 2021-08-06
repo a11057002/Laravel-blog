@@ -75,7 +75,7 @@
                         Youtube連結
                     </label>
                     <input type="text" name="hyperlink" id="hyperlink" class="border border-gray-400 p-2 w-full"
-                        required value="{{ old('hyperlink') }}">
+                        required value="{{ $post->hyperlink }}">
                     @error('hyperlink')
                         <p class="text-red-500 text-xs">{{ $message }}</p>
                     @enderror

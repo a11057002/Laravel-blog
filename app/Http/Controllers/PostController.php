@@ -13,10 +13,11 @@ class PostController extends Controller
 {
     protected $postService;
 
-    public function __construct(PostService $postService){
+    public function __construct(PostService $postService)
+    {
         $this->postService = $postService;
     }
-    
+
     public function index()
     {
         $posts = $this->postService->getPosts();
@@ -27,9 +28,8 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-
-        if(str_contains($post->hyperlink,'youtube'))
-            $post->hyperlink=explode('?v=',$post->hyperlink)[1];
+        //目前只處理 youtube 影片
+        $post->hyperlink = $this->postService->parseYoutube($post->hyperlink);
         // 執行 safe 才會存到 db 中
         // $post->save();
         return view('posts.show', compact('post'));
@@ -45,20 +45,20 @@ class PostController extends Controller
     public function store()
     {
         $this->postService->createPost();
-        return redirect('/post/'.request()->get('slug'));
+        return redirect('/post/' . request()->get('slug'));
     }
-   
+
     public function edit(Post $post)
     {
-        // 換行轉換
-        $post->body = str_replace("<br>","\r\n",$post->body);
-        return view('posts.edit',compact('post'));
+        return view('posts.edit', compact('post'));
     }
 
     public function update(Post $post)
     {
+        // 換行轉換
+        $post->body = str_replace("<br>", "\r\n", $post->body);
         $this->postService->updatePost($post);
-        return redirect('/post/'.request()->get('slug'));
+        return redirect('/post/' . request()->get('slug'));
     }
 
     public function destory(Post $post)
@@ -75,6 +75,4 @@ class PostController extends Controller
         $categories = Category::all();
         return view('posts.index', compact('posts', 'categories', 'currentCategory'));
     }
-
-
 }

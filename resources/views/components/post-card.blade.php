@@ -30,10 +30,10 @@
 
             <footer class="flex justify-between items-center mt-8">
                 <div class="flex items-center text-sm">
-                    <img src="https://i.pravatar.cc/100?u={{$post->user_id}}" alt="Lary avatar">
+                    <img src="https://i.pravatar.cc/100?u={{$post->user_id}}" alt="Lary avatar" class="rounded">
                     <div class="ml-3">
                         <a href="/user/{{ $post->user->name }}">
-                            <h5 class="font-bold">
+                            <h5 class="font-bold" style="width:7em">
                                 {{ $post->user->name }}
                             </h5>
                         </a>
