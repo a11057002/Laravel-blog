@@ -1,5 +1,3 @@
-
-
 <title>Blog</title>
 <header>
     <link rel="stylesheet" href="/css/app.css">
